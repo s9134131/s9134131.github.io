@@ -77,3 +77,16 @@ h1, h2, h3, h4 {
   background: #57A957;
   border: 1px solid #4c964d;
   color: #FFF; }
+
+div.post {
+  background: #F6F6F6;
+  padding: 20px;
+  margin: 26px;
+}
+
+div.pagination {
+	background: #F6F6F6;
+	height: 30px;
+	margin: 0 0 26px 0;
+	font-size: 14pt;
+}

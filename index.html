@@ -1,0 +1,66 @@
+---
+layout: page
+title: 文章列表
+tagline: 蛙齋
+---
+
+<div class="content">
+{% for post in paginator.posts %}
+<div class="post">
+  <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
+  <p class="author">
+    <span class="date">{{ post.date }}</span>
+	<span class="comments"><a href="{{ post.url }}/#disqus_thread"></a></span>
+	<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'wazai';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  </p>
+  <div class="content">
+    {{ post.excerpt }}
+  </div>
+</div>
+{% endfor %}
+
+<center>
+<div class="pagination" style="text-align:center">
+{% if paginator.previous_page %}
+  {% if paginator.previous_page == 1 %}
+    <a href="/">上一頁&nbsp;</a>
+  {% else %}
+    <a href="{{ paginator.previous_page_path }}">上一頁</a>&nbsp;
+  {% endif %}
+{% else %}
+    <span>上一頁&nbsp;</span>
+{% endif %}
+
+{% if paginator.page == 1 %}
+  <span class="current-page">1&nbsp;&nbsp;</span>
+{% else %}
+  <a href="/">1</a>&nbsp;&nbsp;
+{% endif %}
+
+{% for count in (2..paginator.total_pages) %}
+  {% if count == paginator.page %}
+    <span class="current-page">{{ count }}</span>&nbsp;&nbsp;
+  {% else %}
+    <a href="/page{{ count }}">{{ count }}</a>&nbsp;&nbsp;
+  {% endif %}
+{% endfor %}
+
+{% if paginator.next_page %}
+  <a href="{{ paginator.next_page_path }}">下一頁</a> 
+{% else %}
+  <span>下一頁</span>
+{% endif %}
+</div>
+</center>
+</div>
